@@ -1,0 +1,167 @@
+{% load static %}
+{%  static "images" as baseUrl %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouFrame</title>
+
+    <meta name="description" content="Travello template project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+    <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/responsive.css' %}">
+	
+
+<style>
+	
+		.closebtn{
+		position: absolute;
+		top: 10px;
+		right: 15px;
+		color: black;
+		font-size: 35px;
+		cursor: pointer;
+
+		}
+		img {
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		padding: 5px;
+		width: 150px;
+		cursor: pointer;
+		}
+
+		img:hover {
+		box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+		}
+		.footer{
+			
+			
+			width: 100%;
+			background-color:#2c5282;
+			color: #ebf8ff;
+			text-align: center;
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+			
+		}
+
+		h2{
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+		}
+
+		input{
+			
+			cursor: pointer;
+			
+		}
+
+		body{
+			background-color: #ebf8ff;
+		}
+
+		h6{
+			margin-top: -15px;
+			height: 35px;
+			background-color:white;
+			color: #3182ce;
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+		}
+		.navbar-brand{
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+		}
+		
+</style>
+
+</head>
+
+
+<body>
+
+	<nav class="navbar navbar-dark", style="background-color: #2c5282;" >
+		<!-- Navbar content -->
+		<a class="navbar-brand" href="#" style="margin-left:50%;">Gallery</a>
+ 
+	</nav>
+
+    <form action="upload" method="post" enctype="multipart/form-data" style="background-color: #ebf8ff;">
+        {% csrf_token %}
+        <div style="margin-top: 6%;">
+        <center>
+        <input type="file" class="bg-primary" name="image">
+        <input type="submit" value="Upload"class="btn btn-outline-primary  btn-lg" aria-pressed="true"  style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+        </center>
+        </div>
+	</form>
+	
+    <div class="super_container" style="background-color:#ebf8ff ;">
+    <div class="destinations" id="destinations" style="background-color:#ebf8ff;">
+		<div class="container" style="background-color:#ebf8ff;" >
+			<div class="row destinations_row">
+				<div class="col" style="background-color:#ebf8ff;">
+					<div class="destinations_container item_grid">
+
+						<!-- Destination -->
+
+						{% for dest in load %}
+					
+						<div class="destination item">
+							<div class="destination_image">
+								
+								<img src="{{dest.img.url}}" alt="" style="width:100%" onclick="myFunction(this);">
+								<center><p><h6>Image {{dest.id}}</h6></p></center>
+							</div>
+						</div>	
+						{% endfor %}					
+
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+    
+    
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+	<script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+	<script src="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+	<script src="{% static 'plugins/Isotope/isotope.pkgd.min.js' %}"></script>
+	<script src="{% static 'plugins/scrollTo/jquery.scrollTo.min.js' %}"></script>
+	<script src="{% static 'plugins/easing/easing.js' %}"></script>
+	<script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+	<script src="{% static 'js/custom.js' %}"></script>
+
+	<div class="container">
+		<center><h4>Preview</h4></center>
+		<span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+		<img id="expandedImg" style="width:100%">
+		
+		<div id="imgtext"></div>
+  	</div>
+  
+  <script>
+		function myFunction(imgs) {
+			var expandImg = document.getElementById("expandedImg");
+			var imgText = document.getElementById("imgtext");
+			expandImg.src = imgs.src;
+			imgText.innerHTML = imgs.alt;
+			expandImg.parentElement.style.display = "block";	
+			}
+  </script>
+
+
+  <div class="footer">
+	<h2>Fullstack Challeng - 2020</h2>
+  </div>
+  
+</body>
+</html>
+
+
