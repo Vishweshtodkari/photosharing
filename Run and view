@@ -1,0 +1,10 @@
+required;-
+
+1)Python
+2)Django
+3)postgresql
+4)vscode
+
+run command:-
+1) python manage.py runserver. 
+2) copy ip address and pest on browser.
