@@ -32,7 +32,7 @@
 		border: 1px solid #ddd;
 		border-radius: 4px;
 		padding: 5px;
-		width: 150px;
+		width: 300px;
 		cursor: pointer;
 		}
 
@@ -78,6 +78,12 @@
 			font-family: Verdana, Geneva, Tahoma, sans-serif;
 		}
 		
+		#img{
+
+			height: 190px;
+		}
+	
+		
 </style>
 
 </head>
@@ -115,7 +121,7 @@
 						<div class="destination item">
 							<div class="destination_image">
 								
-								<img src="{{dest.img.url}}" alt="" style="width:100%" onclick="myFunction(this);">
+								<img src="{{dest.img.url}}" id = "img" alt="" style="width:100%" onclick="myFunction(this);">
 								<center><p><h6>Image {{dest.id}}</h6></p></center>
 							</div>
 						</div>	
