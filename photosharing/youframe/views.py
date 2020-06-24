@@ -1,3 +1,4 @@
+from django.utils.datastructures import MultiValueDictKeyError
 from django.shortcuts import render, redirect 
 from django.http import HttpResponse 
 from .models import Destination
@@ -10,8 +11,12 @@ def index(request):
 
 
 def uploadImage(request): 
-	p =request.FILES['image']
-	user = Destination(img =p)
-	user.save()
-
-	return redirect('/')
+	try:
+		p =request.FILES['image']
+		user = Destination(img =p)
+		user.save()
+		return redirect('/')
+	
+	except MultiValueDictKeyError as e:
+		
+		return redirect('/')
