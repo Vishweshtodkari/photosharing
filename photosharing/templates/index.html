@@ -161,6 +161,17 @@
 			expandImg.parentElement.style.display = "block";	
 			}
   </script>
+	
+ 	 <script>
+		$(function() {
+			$('form').submit(function() {
+			   if(!$("form input[type=file]").val()) {
+				  alert('You must select a image file to upload!!!');
+				  return false;
+			   }
+			});
+		 });
+ 	</script>	
 
 
   <div class="footer">
