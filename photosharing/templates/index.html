@@ -101,14 +101,13 @@
         {% csrf_token %}
         <div style="margin-top: 6%;">
         <center>
-        <input type="file" class="bg-primary" name="image">
+        <input type="file" class="bg-primary" name="image"  id ="FileUpload1" accept="image/png, image/jpeg, image/jpg">
         <input type="submit" value="Upload"class="btn btn-outline-primary  btn-lg" aria-pressed="true"  style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
         </center>
         </div>
 	</form>
 	
-    <div class="super_container" style="background-color:#ebf8ff ;">
-    <div class="destinations" id="destinations" style="background-color:#ebf8ff;">
+ 
 		<div class="container" style="background-color:#ebf8ff;" >
 			<div class="row destinations_row">
 				<div class="col" style="background-color:#ebf8ff;">
@@ -131,7 +130,7 @@
 				</div>
 			</div>
 		</div>
-    </div>
+   
     
     
     <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
@@ -172,6 +171,21 @@
 			});
 		 });
  	</script>	
+	
+	
+	<script>
+		$('#FileUpload1').change(
+				function () {
+					var fileExtension = ['png','jpeg','jpg'];
+					if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+						alert("Only image file format is allowed.");
+						this.value = ''; // Clean field
+						return false;
+					}
+				});
+	</script>
+	
+	
 
 
   <div class="footer">
